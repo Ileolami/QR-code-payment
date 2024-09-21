@@ -1,34 +1,34 @@
 import { QRCodeSVG } from 'qrcode.react';
 import ConnectBtn from './connectWallet';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAccount,useWriteContract } from 'wagmi';
 import { deployedContract } from './contract/deployedContract';
 import { parseEther } from 'viem';
+import Loading from './components/Loading';
 
 const CreatePayment = () =>{
     const [amount, setAmount] = useState('');
   const [qrValue, setQrValue] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
     const {address} = useAccount();
-    const { writeContractAsync } = useWriteContract()
+    const { writeContractAsync, isSuccess, isPending } = useWriteContract()
 
 
   const generateQRCode = async () => {
-
-    writeContractAsync({ 
-        abi: deployedContract.abi,
-        address: deployedContract.address,
-        functionName: 'sendPayment',
-        value: parseEther(amount),
-    }, {
-
-    })
-  
-    if (amount) {
-      setQrValue(`https://qr-code-payment.vercel.app/receive/${amount}/${address}`);
-      setIsModalOpen(true);
-    }
+    if (!amount) return
+        await writeContractAsync({ 
+            abi: deployedContract.abi,
+            address: deployedContract.address,
+            functionName: 'sendPayment',
+            value: parseEther(amount),
+        })
   };
+  useEffect(() => {
+    if(isSuccess) {
+        setQrValue(`https://qr-code-payment.vercel.app/receive/${amount}/${address}`);
+        setIsModalOpen(true);
+    }
+  }, [isSuccess, isPending, address, amount]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -59,7 +59,7 @@ const CreatePayment = () =>{
             onClick={generateQRCode}
             className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 sm:py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition duration-300"
           >
-            Generate
+           {isPending ? <Loading /> : "Generate"} 
           </button>
         </div>
       </div>

@@ -71,7 +71,7 @@ const CreatePayment = () =>{
               onClick={closeModal}
               className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
             >
-              <span className=' text-2xl'>&times;</span>
+              <span className=' text-white text-2xl'>&times;</span>
             </button>
             <div className="flex justify-center">
               <QRCodeSVG value={qrValue} className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48" />

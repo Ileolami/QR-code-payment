@@ -25,7 +25,7 @@ const CreatePayment = () =>{
     })
   
     if (amount) {
-      setQrValue(`http://192.168.0.110:5173/receive/${amount}/${address}`);
+      setQrValue(`https://qr-code-payment.vercel.app/receive/${amount}/${address}`);
       setIsModalOpen(true);
     }
   };
@@ -46,7 +46,7 @@ const CreatePayment = () =>{
     <>
     <ConnectBtn />
       <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 sm:mb-8">QR Code Generator</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6 sm:mb-8">Payment Generator</h1>
         <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md">
           <input
             type="number"

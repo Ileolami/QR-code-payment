@@ -3,11 +3,15 @@ import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
 
 const client = createThirdwebClient({ clientId: import.meta.env.VITE_CLIENT_ID});
-
-export default function ConnectBtn() {
+type Props = {
+  text?: string
+}
+export default function ConnectBtn({text}: Props) {
   return (
   
-      <ConnectButton client={client} />
+      <ConnectButton connectButton={{
+        label: text? text : "Connect Wallet",
+      }}  client={client} />
    
   );
 }

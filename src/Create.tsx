@@ -46,7 +46,7 @@ const CreatePayment = () =>{
     <>
     <ConnectBtn />
       <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-8">Arbitrum QR Pay</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-8 text-slate-50">Arbitrum QR Pay</h1>
         <div className="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md">
           <input
             type="number"

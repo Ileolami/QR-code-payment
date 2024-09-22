@@ -18,7 +18,7 @@ const handleCLick = () => {
   writeContractAsync({ 
       abi: deployedContract.abi,
       address: deployedContract.address,
-      functionName: 'PaymentSent',
+      functionName: 'withdraw',
       args: [sendersAddress]
   }, {
 

@@ -25,7 +25,7 @@ const CreatePayment = () =>{
   };
   useEffect(() => {
     if(isSuccess) {
-        setQrValue(`hhttps://arbitrum-qr-pay.vercel.app/receive/${amount}/${address}`);
+        setQrValue(`https://arbitrum-qr-pay.vercel.app/receive/${amount}/${address}`);
         setIsModalOpen(true);
     }
   }, [isSuccess, isPending, address, amount]);

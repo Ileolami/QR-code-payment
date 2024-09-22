@@ -1,21 +1,59 @@
-# QR Code Payment with Smart Contracts
+# QR Code Payment System
 
-When working with a smart contract, the URL or data encoded in the QR code will likely need to include information specific to the smart contract interaction. This could include the contract address, the method to call, and any parameters required by the method.
+This project is a QR code payment system that allows users to generate QR codes for payment amounts and receive payments by scanning the QR codes. The system integrates with MetaMask to connect users' wallets and handle transactions.
 
-For example, if you are working with an Ethereum smart contract, you might want to generate a QR code that encodes an Ethereum transaction. This could include the contract address, the method to call, and the amount to send.
+## Features
 
-Here's an example of how you might modify the generateQRCode function to generate a QR code for an Ethereum transaction:
+- Generate QR codes for payment amounts.
+- Display the amount to be received and an input field for the wallet address upon scanning the QR code.
+- Connect to MetaMask to get the user's wallet address.
+- Handle payment transactions using a smart contract.
 
-Smart Contract Address: The address of the smart contract.
-Method to Call: The method you want to call on the smart contract.
-Parameters: Any parameters required by the method.
-Assuming you have a smart contract with an address 0xYourContractAddress and a method pay that takes an amount parameter, you might generate a QR code like this:
+## Technologies Used
 
-```jsx
-const generateQRCode = () => {
-  const contractAddress = '0xYourContractAddress';
-  const method = 'pay';
-  const qrData = `ethereum:${contractAddress}/function:${method}?amount=${amount}`;
-  setQrValue(qrData);
-};
-```
+- React & Typescript
+- Tailwind CSS
+- Wagmi
+- Vite
+- Arbitrum SDK
+- Thirdweb ConnectButtonSDK
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm installed
+- MetaMask extension installed in your browser
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   ghttps://github.com/Ileolami/QR-code-payment
+   cd QR-code-payment
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open the browser and navigate to <http://localhost:5173/> to view the app.
+
+## Usage
+
+1. Enter the amount you want to send in the input field and click "Generate" to create a QR code.
+
+2. Validate the transaction.
+
+3. Your receiver scans the QR code.
+
+> Note: It is recommended for your receiver to carry this action on their wallet browser and have some faucet in their account.

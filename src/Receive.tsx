@@ -20,8 +20,6 @@ const handleCLick = () => {
       address: deployedContract.address,
       functionName: 'withdraw',
       args: [sendersAddress]
-  }, {
-
   })
 }
 
